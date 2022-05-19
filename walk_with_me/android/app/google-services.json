@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "193550299366",
+    "project_id": "walkwithme-2d86e",
+    "storage_bucket": "walkwithme-2d86e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193550299366:android:197593e12954b3729b8b27",
+        "android_client_info": {
+          "package_name": "com.example.walk_with_me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193550299366-b1tmg8934m0sok2gpauhslqke8s9ahgj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE5K6_atlONuIFmhBulZb4YydgaYpSR-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193550299366-b1tmg8934m0sok2gpauhslqke8s9ahgj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
