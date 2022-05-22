@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../animation/fadeanimation.dart';
 
@@ -30,7 +29,7 @@ class _SignupState extends State<Signup> {
     var we = MediaQuery.of(context).size.width;
     var he = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color(0xFF1F1A30),
+      // backgroundColor: const Color(0xFF1F1A30),
       body: SingleChildScrollView(
         child: SizedBox(
           width: we,
@@ -41,22 +40,23 @@ class _SignupState extends State<Signup> {
                 height: he * 0.03,
               ),
               Container(
-                margin: const EdgeInsets.only(right: 80.0),
+                margin: const EdgeInsets.only(
+                  right: 40.0,
+                  top: 40.0,
+                ),
                 child: Text(
                   "Create Your Account",
-                  style: GoogleFonts.heebo(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 35,
-                      letterSpacing: 2),
+                  style: Theme.of(context).textTheme.headline2,
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(right: 130.0),
+                margin: const EdgeInsets.only(
+                  right: 130.0,
+                  top: 40.0,
+                ),
                 child: Text(
                   "Fill in the information below",
-                  style:
-                      GoogleFonts.heebo(color: Colors.grey, letterSpacing: 1),
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ),
               SizedBox(
@@ -87,18 +87,10 @@ class _SignupState extends State<Signup> {
                           ? enabledtxt
                           : deaible,
                     ),
-                    hintText: 'EMAIL',
-                    hintStyle: TextStyle(
-                      color: selected == RegistrationInformation.email
-                          ? enabledtxt
-                          : deaible,
-                    ),
+                    hintText: 'Email',
+                    hintStyle: Theme.of(context).textTheme.headline4,
                   ),
-                  style: TextStyle(
-                      color: selected == RegistrationInformation.email
-                          ? enabledtxt
-                          : deaible,
-                      fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ),
               SizedBox(
@@ -148,16 +140,9 @@ class _SignupState extends State<Signup> {
                             setState(() => ispasswordev = !ispasswordev),
                       ),
                       hintText: 'Password',
-                      hintStyle: TextStyle(
-                          color: selected == RegistrationInformation.password
-                              ? enabledtxt
-                              : deaible)),
+                      hintStyle: Theme.of(context).textTheme.headline4),
                   obscureText: ispasswordev,
-                  style: TextStyle(
-                      color: selected == RegistrationInformation.password
-                          ? enabledtxt
-                          : deaible,
-                      fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ),
               SizedBox(
@@ -179,46 +164,38 @@ class _SignupState extends State<Signup> {
                     });
                   },
                   decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      border: InputBorder.none,
-                      prefixIcon: Icon(
-                        Icons.lock_open_outlined,
-                        color:
-                            selected == RegistrationInformation.confirmpassword
-                                ? enabledtxt
-                                : deaible,
-                      ),
-                      suffixIcon: IconButton(
-                        icon: ispasswordev
-                            ? Icon(
-                                Icons.visibility_off,
-                                color: selected ==
-                                        RegistrationInformation.confirmpassword
-                                    ? enabledtxt
-                                    : deaible,
-                              )
-                            : Icon(
-                                Icons.visibility,
-                                color: selected ==
-                                        RegistrationInformation.confirmpassword
-                                    ? enabledtxt
-                                    : deaible,
-                              ),
-                        onPressed: () =>
-                            setState(() => ispasswordev = !ispasswordev),
-                      ),
-                      hintText: 'Confirm Password',
-                      hintStyle: TextStyle(
-                          color: selected ==
-                                  RegistrationInformation.confirmpassword
-                              ? enabledtxt
-                              : deaible)),
-                  obscureText: ispasswordev,
-                  style: TextStyle(
+                    enabledBorder: InputBorder.none,
+                    border: InputBorder.none,
+                    prefixIcon: Icon(
+                      Icons.lock_open_outlined,
                       color: selected == RegistrationInformation.confirmpassword
                           ? enabledtxt
                           : deaible,
-                      fontWeight: FontWeight.bold),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: ispasswordev
+                          ? Icon(
+                              Icons.visibility_off,
+                              color: selected ==
+                                      RegistrationInformation.confirmpassword
+                                  ? enabledtxt
+                                  : deaible,
+                            )
+                          : Icon(
+                              Icons.visibility,
+                              color: selected ==
+                                      RegistrationInformation.confirmpassword
+                                  ? enabledtxt
+                                  : deaible,
+                            ),
+                      onPressed: () =>
+                          setState(() => ispasswordev = !ispasswordev),
+                    ),
+                    hintText: 'Confirm Password',
+                    hintStyle: Theme.of(context).textTheme.headline4,
+                  ),
+                  obscureText: ispasswordev,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ),
               SizedBox(
@@ -227,13 +204,8 @@ class _SignupState extends State<Signup> {
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  "SING UP",
-                  style: GoogleFonts.heebo(
-                    color: Colors.black,
-                    letterSpacing: 0.5,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  "Sign Up",
+                  style: Theme.of(context).textTheme.headline3,
                 ),
                 style: TextButton.styleFrom(
                   backgroundColor: const Color(0xFF0DF5E4),
@@ -250,24 +222,22 @@ class _SignupState extends State<Signup> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have a account?",
-                        style: GoogleFonts.heebo(
-                          color: Colors.grey,
-                          letterSpacing: 0.5,
-                        )),
+                    Text(
+                      "Already have an account?",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
+                          // go to login page
                           return const Signup();
                         }));
                       },
-                      child: Text("Sing in",
-                          style: GoogleFonts.heebo(
-                            color: const Color(0xFF0DF5E4).withOpacity(0.9),
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 0.5,
-                          )),
+                      child: Text(
+                        "Sign In",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                     ),
                   ],
                 ),

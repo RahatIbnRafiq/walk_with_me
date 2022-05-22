@@ -13,9 +13,47 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Walk With Me',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // Define the default brightness and colors.
+        brightness: Brightness.light,
+        primaryColor: Colors.lightBlue[800],
+
+        // Define the default font family.
+        fontFamily: 'Georgia',
+
+        // Define the default `TextTheme`. Use this to specify the default
+        // text styling for headlines, titles, bodies of text, and more.
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+            fontSize: 35.0,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF1F1A30),
+          ),
+          headline2: TextStyle(
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF1F1A30),
+          ),
+          headline3: TextStyle(
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF1F1A30),
+          ),
+          headline4: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          bodyText1: TextStyle(
+            fontSize: 16.0,
+            color: Colors.purple,
+          ),
+          bodyText2: TextStyle(
+            fontSize: 16.0,
+            color: Color(0xFF1F1A30),
+          ),
+        ),
       ),
       home: const Signup(),
     );
