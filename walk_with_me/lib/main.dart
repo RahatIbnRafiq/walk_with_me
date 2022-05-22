@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walk_with_me/screens/signup.dart';
+import 'package:walk_with_me/screens/signin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const Signup(),
+      home: const Signin(),
     );
   }
 }

@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:walk_with_me/screens/signin.dart';
+import 'package:walk_with_me/screens/signup.dart';
 
 import '../animation/fadeanimation.dart';
 
-enum RegistrationInformation {
-  username,
+enum SignInInformation {
   email,
   password,
-  confirmpassword,
 }
 
-class Signup extends StatefulWidget {
-  const Signup({Key? key}) : super(key: key);
+class Signin extends StatefulWidget {
+  const Signin({Key? key}) : super(key: key);
 
   @override
-  _SignupState createState() => _SignupState();
+  _SigninState createState() => _SigninState();
 }
 
-class _SignupState extends State<Signup> {
+class _SigninState extends State<Signin> {
   Color enabled = const Color(0xFF827F8A);
   Color enabledtxt = Colors.white;
   Color deaible = Colors.grey;
   Color backgroundColor = const Color(0xFF1F1A30);
   bool ispasswordev = true;
-  RegistrationInformation? selected;
+  SignInInformation? selected;
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +40,22 @@ class _SignupState extends State<Signup> {
               ),
               Container(
                 margin: const EdgeInsets.only(
-                  right: 40.0,
                   top: 40.0,
                 ),
                 child: Text(
-                  "Create Your Account",
+                  "Welcome!",
                   style: Theme.of(context).textTheme.headline2,
+                  textAlign: TextAlign.center,
                 ),
               ),
               Container(
                 margin: const EdgeInsets.only(
-                  right: 130.0,
                   top: 40.0,
                 ),
                 child: Text(
-                  "Fill in the information below",
+                  "Please enter your login informaion",
                   style: Theme.of(context).textTheme.bodyText2,
+                  textAlign: TextAlign.center,
                 ),
               ),
               SizedBox(
@@ -68,7 +66,7 @@ class _SignupState extends State<Signup> {
                 height: he * 0.071,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
-                  color: selected == RegistrationInformation.email
+                  color: selected == SignInInformation.email
                       ? enabled
                       : backgroundColor,
                 ),
@@ -76,7 +74,7 @@ class _SignupState extends State<Signup> {
                 child: TextField(
                   onTap: () {
                     setState(() {
-                      selected = RegistrationInformation.email;
+                      selected = SignInInformation.email;
                     });
                   },
                   decoration: InputDecoration(
@@ -84,7 +82,7 @@ class _SignupState extends State<Signup> {
                     border: InputBorder.none,
                     prefixIcon: Icon(
                       Icons.email_outlined,
-                      color: selected == RegistrationInformation.email
+                      color: selected == SignInInformation.email
                           ? enabledtxt
                           : deaible,
                     ),
@@ -102,14 +100,14 @@ class _SignupState extends State<Signup> {
                 height: he * 0.071,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.0),
-                    color: selected == RegistrationInformation.password
+                    color: selected == SignInInformation.password
                         ? enabled
                         : backgroundColor),
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   onTap: () {
                     setState(() {
-                      selected = RegistrationInformation.password;
+                      selected = SignInInformation.password;
                     });
                   },
                   decoration: InputDecoration(
@@ -117,7 +115,7 @@ class _SignupState extends State<Signup> {
                       border: InputBorder.none,
                       prefixIcon: Icon(
                         Icons.lock_open_outlined,
-                        color: selected == RegistrationInformation.password
+                        color: selected == SignInInformation.password
                             ? enabledtxt
                             : deaible,
                       ),
@@ -125,17 +123,15 @@ class _SignupState extends State<Signup> {
                         icon: ispasswordev
                             ? Icon(
                                 Icons.visibility_off,
-                                color:
-                                    selected == RegistrationInformation.password
-                                        ? enabledtxt
-                                        : deaible,
+                                color: selected == SignInInformation.password
+                                    ? enabledtxt
+                                    : deaible,
                               )
                             : Icon(
                                 Icons.visibility,
-                                color:
-                                    selected == RegistrationInformation.password
-                                        ? enabledtxt
-                                        : deaible,
+                                color: selected == SignInInformation.password
+                                    ? enabledtxt
+                                    : deaible,
                               ),
                         onPressed: () =>
                             setState(() => ispasswordev = !ispasswordev),
@@ -149,63 +145,10 @@ class _SignupState extends State<Signup> {
               SizedBox(
                 height: he * 0.02,
               ),
-              Container(
-                width: we * 0.9,
-                height: he * 0.071,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: selected == RegistrationInformation.confirmpassword
-                        ? enabled
-                        : backgroundColor),
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  onTap: () {
-                    setState(() {
-                      selected = RegistrationInformation.confirmpassword;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    enabledBorder: InputBorder.none,
-                    border: InputBorder.none,
-                    prefixIcon: Icon(
-                      Icons.lock_open_outlined,
-                      color: selected == RegistrationInformation.confirmpassword
-                          ? enabledtxt
-                          : deaible,
-                    ),
-                    suffixIcon: IconButton(
-                      icon: ispasswordev
-                          ? Icon(
-                              Icons.visibility_off,
-                              color: selected ==
-                                      RegistrationInformation.confirmpassword
-                                  ? enabledtxt
-                                  : deaible,
-                            )
-                          : Icon(
-                              Icons.visibility,
-                              color: selected ==
-                                      RegistrationInformation.confirmpassword
-                                  ? enabledtxt
-                                  : deaible,
-                            ),
-                      onPressed: () =>
-                          setState(() => ispasswordev = !ispasswordev),
-                    ),
-                    hintText: 'Confirm Password',
-                    hintStyle: Theme.of(context).textTheme.headline4,
-                  ),
-                  obscureText: ispasswordev,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-              SizedBox(
-                height: he * 0.02,
-              ),
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  "Sign Up",
+                  "Sign In",
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 style: TextButton.styleFrom(
@@ -224,7 +167,7 @@ class _SignupState extends State<Signup> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account?",
+                      "Don't have an account yet?",
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                     SizedBox(width: we * 0.01),
@@ -233,11 +176,11 @@ class _SignupState extends State<Signup> {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
                           // go to login page
-                          return const Signin();
+                          return const Signup();
                         }));
                       },
                       child: Text(
-                        "Sign In",
+                        "Sign Up",
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
