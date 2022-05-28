@@ -1,7 +1,9 @@
 // ignore_for_file: unnecessary_new
 
+// import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:walk_with_me/screens/signup.dart';
+import 'package:walk_with_me/widgets/image_carousel.dart';
 
 import '../animation/fadeanimation.dart';
 
@@ -32,21 +34,9 @@ class _SigninState extends State<Signin> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                fit: BoxFit.cover,
-                colorFilter: new ColorFilter.mode(
-                    Colors.black.withOpacity(0.4), BlendMode.dstATop),
-                image: const AssetImage('assets/images/barcelona.jpg'),
-              ),
-            ),
-            // decoration: const BoxDecoration(
-            //   image: DecorationImage(
-            //     image: AssetImage('assets/images/barcelona.jpg'),
-            //     fit: BoxFit.fitHeight,
-            //   ),
-            // ),
+          ImageCarousel(
+            height: he,
+            viewFraction: 1.0,
           ),
           SingleChildScrollView(
             child: Column(
@@ -203,19 +193,6 @@ class _SigninState extends State<Signin> {
                     ],
                   ),
                 ),
-                // const SizedBox(height: 10),
-                // const Image(
-                //   image: AssetImage(
-                //     'assets/images/barcelona.jpg',
-                //   ),
-                // ),
-                // Container(
-                //   decoration: const BoxDecoration(
-                //     image: DecorationImage(
-                //         image: AssetImage('assets/images/barcelona.jpg'),
-                //         fit: BoxFit.fitHeight),
-                //   ),
-                // ),
               ],
             ),
           ),
