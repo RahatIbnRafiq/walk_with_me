@@ -25,7 +25,7 @@ class ImageCarousel extends StatelessWidget {
                   fit: BoxFit.cover,
                   colorFilter: new ColorFilter.mode(
                       Colors.black.withOpacity(0.3), BlendMode.dstATop),
-                  image: AssetImage('assets/images/' + imagesName),
+                  image: AssetImage(CAROUSEL_IMAGES_ADDRESS + imagesName),
                 ),
               ),
             );
