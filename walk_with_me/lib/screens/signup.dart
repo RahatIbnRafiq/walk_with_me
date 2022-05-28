@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:walk_with_me/screens/signin.dart';
 
 import '../animation/fadeanimation.dart';
@@ -241,11 +242,12 @@ class _SignupState extends State<Signup> {
                         SizedBox(width: we * 0.01),
                         GestureDetector(
                           onTap: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) {
-                              // go to login page
-                              return const Signin();
-                            }));
+                            Get.to(const Signin());
+                            // Navigator.of(context)
+                            //     .push(MaterialPageRoute(builder: (context) {
+                            //   // go to login page
+                            //   return const Signin();
+                            // }));
                           },
                           child: Text(
                             "Sign In",

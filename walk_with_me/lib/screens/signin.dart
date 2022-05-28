@@ -2,6 +2,7 @@
 
 // import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:walk_with_me/screens/signup.dart';
 import 'package:walk_with_me/widgets/image_carousel.dart';
 
@@ -179,11 +180,12 @@ class _SigninState extends State<Signin> {
                       SizedBox(width: we * 0.01),
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) {
-                            // go to login page
-                            return const Signup();
-                          }));
+                          Get.to(const Signup());
+                          // Navigator.of(context)
+                          //     .push(MaterialPageRoute(builder: (context) {
+                          //   // go to login page
+                          //   return const Signup();
+                          // }));
                         },
                         child: Text(
                           "Sign Up",
