@@ -5,9 +5,8 @@ class DashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: avoid_unnecessary_containers
-    return Container(
-      child: const Text(
+    return const Scaffold(
+      body: Text(
         'Hello, How are you?',
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,

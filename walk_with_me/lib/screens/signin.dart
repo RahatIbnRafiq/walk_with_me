@@ -3,6 +3,7 @@
 // import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:walk_with_me/controller/auth_controller.dart';
 import 'package:walk_with_me/screens/signup.dart';
 import 'package:walk_with_me/widgets/image_carousel.dart';
 
@@ -27,6 +28,9 @@ class _SigninState extends State<Signin> {
   Color backgroundColor = const Color(0xFF1F1A30);
   bool ispasswordev = true;
   SignInInformation? selected;
+
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +83,7 @@ class _SigninState extends State<Signin> {
                   ),
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    controller: emailController,
                     onTap: () {
                       setState(() {
                         selected = SignInInformation.email;
@@ -112,6 +117,7 @@ class _SigninState extends State<Signin> {
                           : backgroundColor),
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    controller: passwordController,
                     onTap: () {
                       setState(() {
                         selected = SignInInformation.password;
@@ -153,7 +159,12 @@ class _SigninState extends State<Signin> {
                   height: he * 0.02,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    AuthController.instance.login(
+                      emailController.text.trim(),
+                      passwordController.text.trim(),
+                    );
+                  },
                   child: Text(
                     "Sign In",
                     style: Theme.of(context).textTheme.headline3,

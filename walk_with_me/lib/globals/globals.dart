@@ -13,8 +13,6 @@ final List<String> BACKGROUND_CITY_IMAGES = [
   "paris.jpg",
 ];
 
-const String appTitle = "Walk With Me";
-
 // ignore: constant_identifier_names
 const String CAROUSEL_IMAGES_ADDRESS = "assets/images/";
 

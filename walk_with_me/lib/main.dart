@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/controller/auth_controller.dart';
 import 'package:walk_with_me/globals/globals.dart';
+import 'package:walk_with_me/globals/string_globals.dart';
 import 'package:walk_with_me/screens/signin.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: appTitle,
+      title: StringGlobals.APPTITLE,
       theme: themeData,
       home: const Signin(),
     );
