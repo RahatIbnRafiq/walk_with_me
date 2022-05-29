@@ -180,12 +180,7 @@ class _SigninState extends State<Signin> {
                       SizedBox(width: we * 0.01),
                       GestureDetector(
                         onTap: () {
-                          Get.to(const Signup());
-                          // Navigator.of(context)
-                          //     .push(MaterialPageRoute(builder: (context) {
-                          //   // go to login page
-                          //   return const Signup();
-                          // }));
+                          Get.to(() => const Signup());
                         },
                         child: Text(
                           "Sign Up",

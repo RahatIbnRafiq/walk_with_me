@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:walk_with_me/controller/auth_controller.dart';
 import 'package:walk_with_me/screens/signin.dart';
 
 import '../animation/fadeanimation.dart';
@@ -26,6 +27,9 @@ class _SignupState extends State<Signup> {
   Color backgroundColor = const Color(0xFF1F1A30);
   bool ispasswordev = true;
   RegistrationInformation? selected;
+
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +86,7 @@ class _SignupState extends State<Signup> {
                     ),
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      controller: emailController,
                       onTap: () {
                         setState(() {
                           selected = RegistrationInformation.email;
@@ -115,6 +120,7 @@ class _SignupState extends State<Signup> {
                             : backgroundColor),
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      controller: passwordController,
                       onTap: () {
                         setState(() {
                           selected = RegistrationInformation.password;
@@ -215,7 +221,12 @@ class _SignupState extends State<Signup> {
                     height: he * 0.02,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      AuthController.instance.register(
+                        emailController.text.trim(),
+                        passwordController.text.trim(),
+                      );
+                    },
                     child: Text(
                       "Sign Up",
                       style: Theme.of(context).textTheme.headline3,
@@ -242,12 +253,7 @@ class _SignupState extends State<Signup> {
                         SizedBox(width: we * 0.01),
                         GestureDetector(
                           onTap: () {
-                            Get.to(const Signin());
-                            // Navigator.of(context)
-                            //     .push(MaterialPageRoute(builder: (context) {
-                            //   // go to login page
-                            //   return const Signin();
-                            // }));
+                            Get.to(() => const Signin());
                           },
                           child: Text(
                             "Sign In",
