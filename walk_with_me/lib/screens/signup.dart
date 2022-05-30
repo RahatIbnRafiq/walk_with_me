@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/controller/auth_controller.dart';
+import 'package:walk_with_me/globals/globals.dart';
 import 'package:walk_with_me/screens/signin.dart';
 
 import '../animation/fadeanimation.dart';
@@ -85,8 +86,17 @@ class _SignupState extends State<Signup> {
                           : backgroundColor,
                     ),
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(
+                    child: TextFormField(
                       controller: emailController,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) {
+                        if (!GetUtils.isLengthLessThan(
+                            value?.length, MAX_PASSWORD_LENGTH)) {
+                          return "At least 5";
+                        } else {
+                          return null;
+                        }
+                      },
                       onTap: () {
                         setState(() {
                           selected = RegistrationInformation.email;

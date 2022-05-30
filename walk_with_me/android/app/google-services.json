@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:193550299366:android:197593e12954b3729b8b27",
+        "mobilesdk_app_id": "1:193550299366:android:8c83aded44b2dfd49b8b27",
         "android_client_info": {
-          "package_name": "com.example.walk_with_me"
+          "package_name": "com.wwm.walkwithme"
         }
       },
       "oauth_client": [
@@ -29,6 +29,13 @@
             {
               "client_id": "193550299366-b1tmg8934m0sok2gpauhslqke8s9ahgj.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "193550299366-q96ec5dlf5ea0edm5jq6dusddi8jrk8v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.walk.with.me.walkWithMe"
+              }
             }
           ]
         }

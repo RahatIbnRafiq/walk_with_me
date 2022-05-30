@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/controller/auth_controller.dart';
+import 'package:walk_with_me/globals/string_globals.dart';
 import 'package:walk_with_me/screens/signup.dart';
 import 'package:walk_with_me/widgets/image_carousel.dart';
 
@@ -82,7 +83,15 @@ class _SigninState extends State<Signin> {
                         : backgroundColor,
                   ),
                   padding: const EdgeInsets.all(8.0),
-                  child: TextField(
+                  child: TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if (!GetUtils.isEmail(value!)) {
+                        return StringGlobals.INVALID_EMAIL_ERROR;
+                      } else {
+                        return null;
+                      }
+                    },
                     controller: emailController,
                     onTap: () {
                       setState(() {

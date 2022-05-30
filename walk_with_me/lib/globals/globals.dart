@@ -1,5 +1,5 @@
 // ignore: non_constant_identifier_names
-// ignore_for_file: non_constant_identifier_names, duplicate_ignore, unnecessary_const
+// ignore_for_file: non_constant_identifier_names, duplicate_ignore, unnecessary_const, constant_identifier_names
 
 import 'package:flutter/material.dart';
 
@@ -15,6 +15,7 @@ final List<String> BACKGROUND_CITY_IMAGES = [
 
 // ignore: constant_identifier_names
 const String CAROUSEL_IMAGES_ADDRESS = "assets/images/";
+const int MAX_PASSWORD_LENGTH = 6;
 
 final ThemeData themeData = ThemeData(
   primaryColor: const Color(0xFF3EBACE),
