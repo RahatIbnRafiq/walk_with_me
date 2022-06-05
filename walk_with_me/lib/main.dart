@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/globals/messages.dart';
+import 'package:walk_with_me/screens/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,10 @@ class MyApp extends StatelessWidget {
         ),
         body: const Text('Hello there User!'),
       ),
+      initialRoute: '/signup',
+      getPages: [
+        GetPage(name: '/signup', page: () => const Signup()),
+      ],
     );
   }
 }

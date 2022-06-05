@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class Constants {
   static const List<String> backgroundCityImages = [
-    "barcelona.jpg",
-    "dublin.jpg",
-    "istambul.jpg",
-    "london.jpg",
-    "munich.jpg",
-    "rome.jpg",
-    "paris.jpg",
+    "barcelona.jpeg",
+    "dublin.jpeg",
+    "istambul.jpeg",
+    "london.jpeg",
+    "munich.jpeg",
+    "rome.jpeg",
+    "paris.jpeg",
   ];
   static const String carouselImagesAddress = "assets/images/";
   static const int maxPasswordLength = 6;
