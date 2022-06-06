@@ -19,7 +19,7 @@ class AuthController extends GetxController {
     if (user == null) {
       Get.toNamed('/signup');
     } else {
-      Get.toNamed('/signin');
+      Get.toNamed('/home');
     }
   }
 

@@ -6,6 +6,7 @@ import 'package:walk_with_me/bindings/signup_bindings.dart';
 import 'package:walk_with_me/controllers/auth_controller.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/globals/messages.dart';
+import 'package:walk_with_me/screens/home_screen.dart';
 import 'package:walk_with_me/screens/signin.dart';
 import 'package:walk_with_me/screens/signup.dart';
 
@@ -42,6 +43,10 @@ class MyApp extends StatelessWidget {
           name: '/signin',
           page: () => const Signin(),
           binding: SigninBindings(),
+        ),
+        GetPage(
+          name: '/home',
+          page: () => const HomeScreen(),
         ),
       ],
     );
