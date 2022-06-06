@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:walk_with_me/bindings/signin_bindings.dart';
+import 'package:walk_with_me/bindings/signup_bindings.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/globals/messages.dart';
+import 'package:walk_with_me/screens/signin.dart';
 import 'package:walk_with_me/screens/signup.dart';
 
 void main() {
@@ -24,9 +27,18 @@ class MyApp extends StatelessWidget {
         ),
         body: const Text('Hello there User!'),
       ),
-      initialRoute: '/signup',
+      initialRoute: '/signin',
       getPages: [
-        GetPage(name: '/signup', page: () => const Signup()),
+        GetPage(
+          name: '/signup',
+          page: () => const Signup(),
+          binding: SignupBindings(),
+        ),
+        GetPage(
+          name: '/signin',
+          page: () => const Signin(),
+          binding: SigninBindings(),
+        ),
       ],
     );
   }

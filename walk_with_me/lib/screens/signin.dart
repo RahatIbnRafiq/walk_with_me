@@ -4,12 +4,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walk_with_me/controllers/signup_controller.dart';
+import 'package:walk_with_me/controllers/signin_controller.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/widgets/image_carousel.dart';
 
-class Signup extends GetView<SignupController> {
-  const Signup({Key? key}) : super(key: key);
+class Signin extends GetView<SigninController> {
+  const Signin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class Signup extends GetView<SignupController> {
                     top: 40.0,
                   ),
                   child: Text(
-                    'create_account'.tr,
+                    'welcome'.tr,
                     style: Theme.of(context).textTheme.headline2,
                     textAlign: TextAlign.center,
                   ),
@@ -44,7 +44,7 @@ class Signup extends GetView<SignupController> {
                     top: 40.0,
                   ),
                   child: Text(
-                    'fill_in_info'.tr,
+                    'fill_in_login'.tr,
                     style: Theme.of(context).textTheme.bodyText2,
                     textAlign: TextAlign.center,
                   ),
@@ -107,40 +107,12 @@ class Signup extends GetView<SignupController> {
                 SizedBox(
                   height: he * 0.02,
                 ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    left: 5.0,
-                  ),
-                  width: wi * 0.9,
-                  height: he * 0.071,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: backgroundColor,
-                  ),
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    obscureText: true,
-                    style: Theme.of(context).textTheme.headline4,
-                    controller: controller.confirmPasswordController,
-                    decoration: InputDecoration(
-                      icon: const Icon(Icons.lock_open_outlined),
-                      enabledBorder: InputBorder.none,
-                      border: InputBorder.none,
-                      hintStyle:
-                          Theme.of(context).inputDecorationTheme.hintStyle,
-                      hintText: 'confirm_password'.tr,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: he * 0.02,
-                ),
                 TextButton(
                   onPressed: () {
                     if (controller.validate()) {}
                   },
                   child: Text(
-                    'sign_up'.tr,
+                    'sign_in'.tr,
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   style: TextButton.styleFrom(
@@ -157,16 +129,16 @@ class Signup extends GetView<SignupController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'already_Account'.tr,
+                      'no_account_yet'.tr,
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                     SizedBox(width: wi * 0.01),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed('/signin');
+                        Get.toNamed('/signup');
                       },
                       child: Text(
-                        'sign_in'.tr,
+                        'sign_up'.tr,
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
