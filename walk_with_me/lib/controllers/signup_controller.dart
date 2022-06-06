@@ -7,13 +7,13 @@ class SignupController extends GetxController {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
-    confirmPasswordController.dispose();
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   emailController.dispose();
+  //   passwordController.dispose();
+  //   confirmPasswordController.dispose();
+  //   super.onClose();
+  // }
 
   bool validate() {
     if (!GetUtils.isEmail(emailController.text)) {

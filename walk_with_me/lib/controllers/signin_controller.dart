@@ -5,13 +5,6 @@ class SigninController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.onClose();
-  }
-
   bool validate() {
     if (!GetUtils.isEmail(emailController.text)) {
       Get.snackbar('error_text'.tr, 'invalid_email_error'.tr);

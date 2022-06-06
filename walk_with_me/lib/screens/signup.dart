@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:walk_with_me/controllers/auth_controller.dart';
 import 'package:walk_with_me/controllers/signup_controller.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/widgets/image_carousel.dart';
@@ -138,7 +139,11 @@ class Signup extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    if (signupController.validate()) {}
+                    if (signupController.validate()) {
+                      AuthController.instance.register(
+                          signupController.emailController.text.trim(),
+                          signupController.passwordController.text.trim());
+                    }
                   },
                   child: Text(
                     'sign_up'.tr,

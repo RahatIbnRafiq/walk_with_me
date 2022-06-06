@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:walk_with_me/controllers/auth_controller.dart';
 import 'package:walk_with_me/controllers/signin_controller.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/widgets/image_carousel.dart';
@@ -110,7 +111,11 @@ class Signin extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    if (signinController.validate()) {}
+                    if (signinController.validate()) {
+                      AuthController.instance.login(
+                          signinController.emailController.text.trim(),
+                          signinController.passwordController.text.trim());
+                    }
                   },
                   child: Text(
                     'sign_in'.tr,
