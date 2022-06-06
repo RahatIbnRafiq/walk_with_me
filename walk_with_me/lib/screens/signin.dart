@@ -8,13 +8,14 @@ import 'package:walk_with_me/controllers/signin_controller.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/widgets/image_carousel.dart';
 
-class Signin extends GetView<SigninController> {
+class Signin extends StatelessWidget {
   const Signin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var he = MediaQuery.of(context).size.height;
     var wi = MediaQuery.of(context).size.width;
+    SigninController signinController = Get.find<SigninController>();
     Color backgroundColor = Constants.primaryThemeData.backgroundColor;
     return Scaffold(
       body: Stack(
@@ -65,7 +66,7 @@ class Signin extends GetView<SigninController> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     style: Theme.of(context).textTheme.headline4,
-                    controller: controller.emailController,
+                    controller: signinController.emailController,
                     decoration: InputDecoration(
                       icon: const Icon(Icons.email),
                       enabledBorder: InputBorder.none,
@@ -93,7 +94,7 @@ class Signin extends GetView<SigninController> {
                   child: TextFormField(
                     obscureText: true,
                     style: Theme.of(context).textTheme.headline4,
-                    controller: controller.passwordController,
+                    controller: signinController.passwordController,
                     decoration: InputDecoration(
                       icon: const Icon(Icons.lock_open_outlined),
                       enabledBorder: InputBorder.none,
@@ -109,7 +110,7 @@ class Signin extends GetView<SigninController> {
                 ),
                 TextButton(
                   onPressed: () {
-                    if (controller.validate()) {}
+                    if (signinController.validate()) {}
                   },
                   child: Text(
                     'sign_in'.tr,

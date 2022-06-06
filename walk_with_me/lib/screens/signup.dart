@@ -8,13 +8,14 @@ import 'package:walk_with_me/controllers/signup_controller.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/widgets/image_carousel.dart';
 
-class Signup extends GetView<SignupController> {
+class Signup extends StatelessWidget {
   const Signup({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var he = MediaQuery.of(context).size.height;
     var wi = MediaQuery.of(context).size.width;
+    SignupController signupController = Get.find<SignupController>();
     Color backgroundColor = Constants.primaryThemeData.backgroundColor;
     return Scaffold(
       body: Stack(
@@ -65,7 +66,7 @@ class Signup extends GetView<SignupController> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     style: Theme.of(context).textTheme.headline4,
-                    controller: controller.emailController,
+                    controller: signupController.emailController,
                     decoration: InputDecoration(
                       icon: const Icon(Icons.email),
                       enabledBorder: InputBorder.none,
@@ -93,7 +94,7 @@ class Signup extends GetView<SignupController> {
                   child: TextFormField(
                     obscureText: true,
                     style: Theme.of(context).textTheme.headline4,
-                    controller: controller.passwordController,
+                    controller: signupController.passwordController,
                     decoration: InputDecoration(
                       icon: const Icon(Icons.lock_open_outlined),
                       enabledBorder: InputBorder.none,
@@ -121,7 +122,7 @@ class Signup extends GetView<SignupController> {
                   child: TextFormField(
                     obscureText: true,
                     style: Theme.of(context).textTheme.headline4,
-                    controller: controller.confirmPasswordController,
+                    controller: signupController.confirmPasswordController,
                     decoration: InputDecoration(
                       icon: const Icon(Icons.lock_open_outlined),
                       enabledBorder: InputBorder.none,
@@ -137,7 +138,7 @@ class Signup extends GetView<SignupController> {
                 ),
                 TextButton(
                   onPressed: () {
-                    if (controller.validate()) {}
+                    if (signupController.validate()) {}
                   },
                   child: Text(
                     'sign_up'.tr,
