@@ -26,6 +26,11 @@ class Messages extends Translations {
           'welcome': 'Welcome!',
           'fill_in_login': "Please enter your login informaion",
           'password_cant_be_empty': "Password cannot be empty",
+          'login_failed': "Login Failed",
+          'login_error': "The login credentials did not match",
+          'signup_failed': "Registration Attempt Failed",
+          'signup_error':
+              "Something bad happened when we tried to sign you up. Can you try again?",
         },
       };
 }

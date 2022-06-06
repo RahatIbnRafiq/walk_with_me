@@ -163,7 +163,7 @@ class Signup extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'already_Account'.tr,
+                      'account_already'.tr,
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                     SizedBox(width: wi * 0.01),

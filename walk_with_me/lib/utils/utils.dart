@@ -7,6 +7,8 @@ class Utils {
       title,
       message,
       messageText: Text(error),
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.redAccent,
     );
   }
 }
