@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/widgets/app_drawer.dart';
+import 'package:walk_with_me/widgets/city_carousel.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -29,6 +30,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 20.0,
             ),
+            const CityCarousel(),
             const SizedBox(
               height: 20.0,
             ),
