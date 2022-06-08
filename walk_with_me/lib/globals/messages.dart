@@ -30,7 +30,8 @@ class Messages extends Translations {
           'login_error': "The login credentials did not match",
           'signup_failed': "Registration Attempt Failed",
           'signup_error':
-              "Something bad happened when we tried to sign you up. Can you try again?",
+              "Something bad happened when we tried to sign youup. Can you try again?",
+          'what_would_you_like_to_find': "What would you like to find?",
         },
       };
 }

@@ -17,7 +17,7 @@ class AuthController extends GetxController {
 
   _initialScreen(User? user) {
     if (user == null) {
-      Get.toNamed('/signup');
+      Get.toNamed('/signin');
     } else {
       Get.toNamed('/home');
     }
