@@ -35,6 +35,9 @@ class Messages extends Translations {
           'discover': "Discover!",
           'search_for_anything':
               "Search for a city, museum, painting, anything!",
+          'map_view': "Map View",
+          'contact_us': "Contact us",
+          'home': "Home"
         },
       };
 }

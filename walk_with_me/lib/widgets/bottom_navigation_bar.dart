@@ -5,6 +5,16 @@ import 'package:walk_with_me/controllers/bottom_nav_bar_controller.dart';
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({Key? key}) : super(key: key);
 
+  BottomNavigationBarItem navBarItem(IconData icon, String label) {
+    return BottomNavigationBarItem(
+      icon: Icon(
+        icon,
+        size: 20.0,
+      ),
+      label: label,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     BottomNavigationBarController bottomNavBarController =
@@ -18,28 +28,10 @@ class BottomNavBar extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.black,
         elevation: 0.0,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.navigation,
-              size: 20.0,
-            ),
-            label: 'Map View',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.info,
-              size: 20.0,
-            ),
-            label: 'Info',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.feedback_rounded,
-              size: 20.0,
-            ),
-            label: 'Contact us',
-          ),
+        items: [
+          navBarItem(Icons.home, 'home'.tr),
+          navBarItem(Icons.navigation, 'map_view'.tr),
+          navBarItem(Icons.feedback, 'contact_us'.tr),
         ],
       ),
     );
