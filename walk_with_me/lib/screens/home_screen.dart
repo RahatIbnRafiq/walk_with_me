@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/widgets/app_drawer.dart';
+import 'package:walk_with_me/widgets/bottom_navigation_bar.dart';
 import 'package:walk_with_me/widgets/city_carousel.dart';
 import 'package:walk_with_me/widgets/search_suggestion.dart';
 
@@ -56,6 +57,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

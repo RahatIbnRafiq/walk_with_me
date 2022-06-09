@@ -10,6 +10,8 @@ import 'package:walk_with_me/screens/home_screen.dart';
 import 'package:walk_with_me/screens/signin.dart';
 import 'package:walk_with_me/screens/signup.dart';
 
+import 'bindings/homepage_bindings.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) => Get.put(AuthController()));
@@ -47,6 +49,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/home',
           page: () => const HomeScreen(),
+          binding: HomepageBindings(),
         ),
       ],
     );
