@@ -31,7 +31,10 @@ class Messages extends Translations {
           'signup_failed': "Registration Attempt Failed",
           'signup_error':
               "Something bad happened when we tried to sign youup. Can you try again?",
-          'what_would_you_like_to_find': "What would you like to find?",
+          'download_a_city': "Browse Cities",
+          'discover': "Discover!",
+          'search_for_anything':
+              "Search for a city, museum, painting, anything!",
         },
       };
 }

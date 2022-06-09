@@ -12,6 +12,18 @@ class City {
     required this.country,
     required this.description,
   });
+
+  static List<City> getAll() {
+    return cities;
+  }
+
+  static List<City> getDownloaded() {
+    return cities.sublist(1, 3);
+  }
+
+  static List<City> getMostPopular() {
+    return cities.sublist(2, 5);
+  }
 }
 
 List<City> cities = [
