@@ -1,3 +1,4 @@
+import 'package:feedback/feedback.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,36 +23,38 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      translations: Messages(),
-      locale: const Locale('en', 'US'),
-      debugShowCheckedModeBanner: false,
-      title: 'apptitle'.tr,
-      theme: Constants.primaryThemeData,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('apptitle'.tr),
+    return BetterFeedback(
+      child: GetMaterialApp(
+        translations: Messages(),
+        locale: const Locale('en', 'US'),
+        debugShowCheckedModeBanner: false,
+        title: 'apptitle'.tr,
+        theme: Constants.primaryThemeData,
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('apptitle'.tr),
+          ),
+          body: const Text('Hello there User!'),
         ),
-        body: const Text('Hello there User!'),
+        initialRoute: '/signin',
+        getPages: [
+          GetPage(
+            name: '/signup',
+            page: () => const Signup(),
+            binding: SignupBindings(),
+          ),
+          GetPage(
+            name: '/signin',
+            page: () => const Signin(),
+            binding: SigninBindings(),
+          ),
+          GetPage(
+            name: '/home',
+            page: () => const HomeScreen(),
+            binding: HomepageBindings(),
+          ),
+        ],
       ),
-      initialRoute: '/signin',
-      getPages: [
-        GetPage(
-          name: '/signup',
-          page: () => const Signup(),
-          binding: SignupBindings(),
-        ),
-        GetPage(
-          name: '/signin',
-          page: () => const Signin(),
-          binding: SigninBindings(),
-        ),
-        GetPage(
-          name: '/home',
-          page: () => const HomeScreen(),
-          binding: HomepageBindings(),
-        ),
-      ],
     );
   }
 }

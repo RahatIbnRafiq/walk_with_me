@@ -30,10 +30,12 @@ dependencies:
   cached_network_image: ^3.2.0
   carousel_slider: ^4.1.1
   cupertino_icons: ^1.0.2
+  feedback: ^2.5.0
   firebase_auth: ^3.3.19
   firebase_core: ^1.17.1
   flutter:
     sdk: flutter
+  flutter_markdown: ^0.6.9
   flutter_typeahead: ^3.2.3
   font_awesome_flutter: ^10.1.0
   get: ^4.6.5
