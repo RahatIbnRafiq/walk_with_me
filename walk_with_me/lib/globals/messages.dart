@@ -31,13 +31,13 @@ class Messages extends Translations {
           'signup_failed': "Registration Attempt Failed",
           'signup_error':
               "Something bad happened when we tried to sign youup. Can you try again?",
-          'download_a_city': "Browse Cities",
+          'browse_cities': "Browse Cities",
           'discover': "Discover!",
           'search_for_anything':
               "Search for a city, museum, painting, anything!",
           'map_view': "Map View",
           'contact_us': "Contact us",
-          'home': "Home",
+          'explore': "Explore",
           'start_feedback': "Start Feedback",
           'feedback_data': "# How does it work? \n"
               "1. Just press the `Start Feedback` button.\n"
@@ -49,7 +49,8 @@ class Messages extends Translations {
               "drawing mode just press the `Draw` button on the right "
               "side. Now you can draw on the screen.\n"
               "3. To finish your feedback just write a message "
-              "below and send it by pressing the `Submit` button."
+              "below and send it by pressing the `Submit` button.",
+          'explore_entities': "Explore Entities",
         },
       };
 }

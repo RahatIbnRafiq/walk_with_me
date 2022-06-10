@@ -29,7 +29,7 @@ class BottomNavBar extends StatelessWidget {
         selectedItemColor: Colors.black,
         elevation: 0.0,
         items: [
-          navBarItem(Icons.home, 'home'.tr),
+          navBarItem(Icons.travel_explore_rounded, 'explore'.tr),
           navBarItem(Icons.navigation, 'map_view'.tr),
           navBarItem(Icons.feedback, 'contact_us'.tr),
         ],
