@@ -39,7 +39,7 @@ class DiscoverScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 10.0),
             child: Text(
-              'explore_entities'.tr,
+              'explore_sites'.tr,
               style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,

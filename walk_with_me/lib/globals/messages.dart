@@ -51,7 +51,7 @@ class Messages extends Translations {
               "side. Now you can draw on the screen.\n"
               "3. To finish your feedback just write a message "
               "below and send it by pressing the `Submit` button.",
-          'explore_entities': "Explore Entities",
+          'explore_sites': "Explore Sites",
         },
       };
 }
