@@ -6,6 +6,7 @@ class AuthController extends GetxController {
   static AuthController instance = Get.find();
   late Rx<User?> _user;
   FirebaseAuth auth = FirebaseAuth.instance;
+  String userEmail = "";
 
   @override
   void onReady() {
@@ -17,8 +18,9 @@ class AuthController extends GetxController {
 
   _initialScreen(User? user) {
     if (user == null) {
-      Get.toNamed('/signup');
+      Get.toNamed('/signin');
     } else {
+      userEmail = user.email!;
       Get.toNamed('/home');
     }
   }
