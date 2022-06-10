@@ -12,8 +12,8 @@ class BackendService {
 
 class CitiesService {
   static final List<String> cities = [
-    'Beirut',
-    'Damascus',
+    'Berlin',
+    'Dhaka',
     'San Fransisco',
     'Rome',
     'Los Angeles',

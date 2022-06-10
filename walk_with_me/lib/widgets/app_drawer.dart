@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:walk_with_me/controllers/auth_controller.dart';
+import 'package:walk_with_me/globals/constants.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -8,29 +8,58 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      // Add a ListView to the drawer. This ensures the user can scroll
-      // through the options in the drawer if there isn't enough vertical
-      // space to fit everything.
       child: ListView(
-        // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(
-              color: Colors.blue,
+          UserAccountsDrawerHeader(
+            currentAccountPicture: const CircleAvatar(
+              backgroundImage: NetworkImage(
+                  'https://c8.alamy.com/comp/2F9MJ5P/line-drawing-of-a-male-person-sitting-on-chair-and-thinking-continuous-line-drawing-of-sitting-businessman-vector-illustration-free-single-line-draw-2F9MJ5P.jpg'),
             ),
-            child: Text('apptitle'.tr),
+            accountEmail: Text(
+              AuthController.instance.userEmail,
+              style: const TextStyle(fontSize: 20.0),
+            ),
+            accountName: null,
+            decoration: BoxDecoration(
+              color: Constants.primaryThemeData.scaffoldBackgroundColor,
+            ),
           ),
           ListTile(
-            title: const Text('Downloaded Cities'),
+            leading: const Icon(Icons.download_for_offline),
+            title: const Text(
+              'Downloaded Cities',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             onTap: () {},
           ),
           ListTile(
-            title: const Text('Settings'),
+            leading: const Icon(Icons.settings),
+            title: const Text(
+              'Settings',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             onTap: () {},
           ),
+          const Divider(
+            height: 10,
+            thickness: 1,
+          ),
           ListTile(
-            title: const Text('Sign out'),
+            leading: const Icon(Icons.logout),
+            title: const Text(
+              'Sign Out',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             onTap: () {
               AuthController.instance.logOut();
             },
@@ -38,5 +67,32 @@ class AppDrawer extends StatelessWidget {
         ],
       ),
     );
+    // return Drawer(
+    //   child: ListView(
+    //     padding: EdgeInsets.zero,
+    //     children: [
+    //       DrawerHeader(
+    //         decoration: const BoxDecoration(
+    //           color: Colors.blue,
+    //         ),
+    //         child: Text('apptitle'.tr),
+    //       ),
+    //       ListTile(
+    //         title: const Text('Downloaded Cities'),
+    //         onTap: () {},
+    //       ),
+    //       ListTile(
+    //         title: const Text('Settings'),
+    //         onTap: () {},
+    //       ),
+    //       ListTile(
+    //         title: const Text('Sign out'),
+    //         onTap: () {
+    //           AuthController.instance.logOut();
+    //         },
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }

@@ -25,21 +25,21 @@ class Constants {
           scaffoldKey.currentState!.openDrawer();
         },
       ),
-      actions: <Widget>[
-        PopupMenuButton<int>(
-          icon: const Icon(
-            Icons.person,
-            color: Colors.black,
-          ),
-          onSelected: (item) {
-            popUpMenuNavigations(item);
-          },
-          itemBuilder: (context) => [
-            const PopupMenuItem<int>(value: 1, child: Text('Settings')),
-            const PopupMenuItem<int>(value: 0, child: Text('Sign Out')),
-          ],
-        ),
-      ],
+      // actions: <Widget>[
+      //   PopupMenuButton<int>(
+      //     icon: const Icon(
+      //       Icons.person,
+      //       color: Colors.black,
+      //     ),
+      //     onSelected: (item) {
+      //       popUpMenuNavigations(item);
+      //     },
+      //     itemBuilder: (context) => [
+      //       const PopupMenuItem<int>(value: 1, child: Text('Settings')),
+      //       const PopupMenuItem<int>(value: 0, child: Text('Sign Out')),
+      //     ],
+      //   ),
+      // ],
     );
   }
 
