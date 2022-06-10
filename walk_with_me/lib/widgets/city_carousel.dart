@@ -69,7 +69,7 @@ class _CityCarouselState extends State<CityCarousel>
                     child: Stack(
                       children: [
                         Hero(
-                          tag: city.imageUrl,
+                          tag: 'city_' + city.imageUrl,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20.0),
                             child: Image(

@@ -21,6 +21,7 @@ class Messages extends Translations {
           'confirm_password': 'Confirm Password',
           'sign_up': 'Sign Up',
           'sign_in': 'Sign In',
+          'sign_out': 'Sign Out',
           'account_already': 'Already have an account?',
           'no_account_yet': 'Don\'t have an account yet?',
           'welcome': 'Welcome!',

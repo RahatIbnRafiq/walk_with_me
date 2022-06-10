@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/controllers/bottom_nav_bar_controller.dart';
+import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/screens/contact_us_screen.dart';
 import 'package:walk_with_me/screens/discover_screen.dart';
 import 'package:walk_with_me/screens/mapview_screen.dart';
@@ -12,10 +13,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     BottomNavigationBarController bottomNavBarController =
         Get.find<BottomNavigationBarController>();
     return Scaffold(
-      appBar: AppBar(title: Text('apptitle'.tr)),
+      key: scaffoldKey,
+      appBar: Constants.getCustomAppBar(scaffoldKey),
       drawer: const AppDrawer(),
       body: Obx(
         () => IndexedStack(

@@ -15,20 +15,6 @@ class DiscoverScreen extends StatelessWidget {
           vertical: 10.0,
         ),
         children: [
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 20.0, right: 100.0),
-          //   child: Text(
-          //     'discover'.tr,
-          //     textAlign: TextAlign.left,
-          //     style: const TextStyle(
-          //       fontSize: 30,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          // ),
-          // const SizedBox(
-          //   height: 20.0,
-          // ),
           const SearchSuggestion(),
           const SizedBox(
             height: 40.0,
