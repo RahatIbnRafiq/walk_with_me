@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walk_with_me/widgets/city_carousel.dart';
-import 'package:walk_with_me/widgets/entity_carousel.dart';
 import 'package:walk_with_me/widgets/search_suggestion.dart';
 
 class DiscoverScreen extends StatelessWidget {
@@ -32,7 +30,7 @@ class DiscoverScreen extends StatelessWidget {
           const SizedBox(
             height: 20.0,
           ),
-          const CityCarousel(),
+          //const CityCarousel(),
           const SizedBox(
             height: 20.0,
           ),
@@ -46,7 +44,7 @@ class DiscoverScreen extends StatelessWidget {
               ),
             ),
           ),
-          const EntityCarousel(),
+          //const EntityCarousel(),
         ],
       ),
     );
