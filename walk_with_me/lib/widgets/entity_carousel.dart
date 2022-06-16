@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:walk_with_me/models/entity.dart';
+import 'package:walk_with_me/models/site.dart';
+import 'package:walk_with_me/services/backend_service.dart';
 
 class EntityCarousel extends StatelessWidget {
   const EntityCarousel({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var allSites = SitesService.getAllSites();
     return Column(
       children: [
         SizedBox(
           height: 300.0,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: entities.length,
+            itemCount: allSites.length,
             itemBuilder: (context, index) {
-              Entity entity = entities[index];
+              Site site = allSites[index];
               return Container(
                 margin: const EdgeInsets.all(10.0),
                 width: 250.0,
@@ -37,7 +39,7 @@ class EntityCarousel extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                entity.description,
+                                site.description,
                                 style: const TextStyle(
                                   color: Colors.grey,
                                 ),
@@ -62,13 +64,13 @@ class EntityCarousel extends StatelessWidget {
                       child: Stack(
                         children: [
                           Hero(
-                            tag: 'entity_' + entity.imageUrl,
+                            tag: 'entity_' + site.imageUrl,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20.0),
                               child: Image(
                                 height: 180.0,
                                 width: 240.0,
-                                image: AssetImage(entity.imageUrl),
+                                image: AssetImage(site.imageUrl),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -80,7 +82,7 @@ class EntityCarousel extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  entity.name,
+                                  site.name,
                                   style: const TextStyle(
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.w600,
