@@ -1,21 +1,15 @@
 import 'package:feedback/feedback.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walk_with_me/bindings/signin_bindings.dart';
-import 'package:walk_with_me/bindings/signup_bindings.dart';
-import 'package:walk_with_me/controllers/auth_controller.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/globals/messages.dart';
 import 'package:walk_with_me/screens/home_screen.dart';
-import 'package:walk_with_me/screens/signin.dart';
-import 'package:walk_with_me/screens/signup.dart';
 
 import 'bindings/homepage_bindings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  // await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 
@@ -36,18 +30,18 @@ class MyApp extends StatelessWidget {
           ),
           body: const Text('Hello there User!'),
         ),
-        initialRoute: '/signin',
+        initialRoute: '/home',
         getPages: [
-          GetPage(
-            name: '/signup',
-            page: () => const Signup(),
-            binding: SignupBindings(),
-          ),
-          GetPage(
-            name: '/signin',
-            page: () => const Signin(),
-            binding: SigninBindings(),
-          ),
+          // GetPage(
+          //   name: '/signup',
+          //   page: () => const Signup(),
+          //   binding: SignupBindings(),
+          // ),
+          // GetPage(
+          //   name: '/signin',
+          //   page: () => const Signin(),
+          //   binding: SigninBindings(),
+          // ),
           GetPage(
             name: '/home',
             page: () => const HomeScreen(),
