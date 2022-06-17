@@ -52,6 +52,9 @@ class Messages extends Translations {
               "3. To finish your feedback just write a message "
               "below and send it by pressing the `Submit` button.",
           'explore_entities': "Explore Entities",
+          'enable_location': "Enable Location",
+          'get_current_location': "Get Current Location",
+          'disable_location': "Disable Location",
         },
       };
 }
