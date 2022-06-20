@@ -29,7 +29,7 @@ class SiteItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 child: ColorFiltered(
                   colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.5), BlendMode.dstATop),
+                      Colors.black.withOpacity(0.4), BlendMode.dstATop),
                   child: Image(
                     height: double.infinity,
                     width: double.infinity,
@@ -40,19 +40,66 @@ class SiteItem extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 10.0,
+              top: 10.0,
               left: 10.0,
               child: SizedBox(
                 width: 150,
-                child: Text(
-                  site.name,
-                  maxLines: 4,
-                  style: const TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        site.name,
+                        maxLines: 3,
+                        style: const TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        site.description,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
+                        style: const TextStyle(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Tags:" + site.category.join(","),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                      style: const TextStyle(
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+            ),
+            Positioned(
+              bottom: 10.0,
+              right: 10.0,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.play_circle_filled,
+                  color: Colors.black26,
+                ),
+                iconSize: 70,
+                alignment: Alignment.center,
+                onPressed: () {},
               ),
             ),
           ],

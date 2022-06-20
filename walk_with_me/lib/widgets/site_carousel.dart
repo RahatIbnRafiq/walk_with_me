@@ -1,6 +1,5 @@
-// ignore_for_file: avoid_unnecessary_containers, unused_local_variable
+// ignore_for_file: unused_local_variable
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/controllers/city_controller.dart';
