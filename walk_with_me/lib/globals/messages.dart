@@ -55,6 +55,9 @@ class Messages extends Translations {
           'enable_location': "Enable Location",
           'get_current_location': "Get Current Location",
           'disable_location': "Disable Location",
+          'downloaded_cities': "Downloaded",
+          'top_cities': "Top cities",
+          'see_all': 'See All',
         },
       };
 }

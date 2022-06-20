@@ -1,15 +1,19 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// ignore_for_file: unused_local_variable
+import 'package:walk_with_me/controllers/city_controller.dart';
 import 'package:walk_with_me/controllers/location_controller.dart';
-import 'package:walk_with_me/widgets/entity_carousel.dart';
+import 'package:walk_with_me/widgets/city_carousel.dart';
 import 'package:walk_with_me/widgets/search_suggestion.dart';
+import 'package:walk_with_me/widgets/site_carousel.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    CityController cityController = Get.find<CityController>();
     LocationController locationController = Get.find<LocationController>();
     return SafeArea(
       child: ListView(
@@ -23,7 +27,7 @@ class DiscoverScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20.0, right: 10.0),
                 child: Obx(
                   () => Text(
-                    locationController.address.value,
+                    cityController.currentCity.value.toString(),
                     style: const TextStyle(
                       color: Colors.blue,
                       fontSize: 10,
@@ -37,50 +41,35 @@ class DiscoverScreen extends StatelessWidget {
             height: 5.0,
           ),
           const SearchSuggestion(),
-          // const SizedBox(
-          //   height: 40.0,
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 20.0, right: 10.0),
-          //   child: Text(
-          //     'browse_cities'.tr,
-          //     style: const TextStyle(
-          //       fontSize: 25,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          // ),
-          // const SizedBox(
-          //   height: 20.0,
-          // ),
-          //const CityCarousel(),
-          // const SizedBox(
-          //   height: 20.0,
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 20.0, right: 10.0),
-          //   child: Text(
-          //     'explore_entities'.tr,
-          //     style: const TextStyle(
-          //       fontSize: 30,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          // ),
           const SizedBox(
             height: 20.0,
           ),
-          // Obx(
-          //   () => Text(
-          //     locationController.address.value,
-          //     style: const TextStyle(
-          //       color: Colors.black,
-          //       fontSize: 25,
-          //     ),
-          //   ),
-          // ),
-
-          const EntityCarousel(),
+          const CityCarousel(),
+          const SizedBox(
+            height: 40.0,
+          ),
+          Obx(
+            () => Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 10.0),
+              child: Text(
+                'Sites for ' + cityController.cityToshowSites.value,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 40.0,
+          ),
+          Obx(
+            () => SiteCarousel(
+              viewFraction: 0.8,
+              cityToshowSites: cityController.cityToshowSites.value,
+            ),
+          ),
         ],
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
+import 'package:walk_with_me/controllers/city_controller.dart';
+// import 'package:walk_with_me/controllers/location_controller.dart';
 import 'package:walk_with_me/services/backend_service.dart';
 
 class SearchSuggestion extends StatelessWidget {
@@ -8,6 +10,7 @@ class SearchSuggestion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CityController cityController = Get.find<CityController>();
     return TypeAheadField(
       textFieldConfiguration: TextFieldConfiguration(
         autofocus: false,
@@ -16,9 +19,7 @@ class SearchSuggestion extends StatelessWidget {
             .copyWith(fontStyle: FontStyle.italic),
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.search),
-          //labelText: 'search_for_anything'.tr,
           border: const OutlineInputBorder(),
-          //labelStyle: Theme.of(context).textTheme.bodyText2,
           hintText: 'search_for_anything'.tr,
         ),
       ),
@@ -31,7 +32,9 @@ class SearchSuggestion extends StatelessWidget {
           title: Text(suggestion.toString()),
         );
       },
-      onSuggestionSelected: (suggestion) {},
+      onSuggestionSelected: (suggestion) {
+        cityController.changeSuggestedCity(suggestion.toString());
+      },
     );
   }
 }

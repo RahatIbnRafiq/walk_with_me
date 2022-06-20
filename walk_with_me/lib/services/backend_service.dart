@@ -159,8 +159,8 @@ class SitesService {
           description:
               "Buckingham Palace is the London residence and administrative "
               "headquarters of the monarchy of the United Kingdom. Located in "
-              "the City of Westminster, the palace is often at the centre of "
               "state occasions and royal hospitality. It has been a focal point"
+              "the City of Westminster, the palace is often at the centre of "
               " for the British people at times of national rejoicing and "
               "mourning. Originally known as Buckingham House, the building "
               "at the core of today's palace was a large townhouse built for the"

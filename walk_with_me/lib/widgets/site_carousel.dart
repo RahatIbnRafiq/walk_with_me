@@ -1,43 +1,42 @@
+// ignore_for_file: avoid_unnecessary_containers, unused_local_variable
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:walk_with_me/globals/constants.dart';
+import 'package:get/get.dart';
+import 'package:walk_with_me/controllers/city_controller.dart';
+import 'package:walk_with_me/controllers/location_controller.dart';
+import 'package:walk_with_me/models/site.dart';
+import 'package:walk_with_me/widgets/site_item.dart';
 
 class SiteCarousel extends StatelessWidget {
-  final double height;
   final double viewFraction;
+  final String cityToshowSites;
   const SiteCarousel({
     Key? key,
-    required this.height,
     required this.viewFraction,
+    required this.cityToshowSites,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      items: Constants.backgroundCityImages.map<Widget>((imagesName) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.3), BlendMode.dstATop),
-                  image:
-                      AssetImage(Constants.carouselImagesAddress + imagesName),
-                ),
-              ),
-            );
-          },
-        );
-      }).toList(),
-      options: CarouselOptions(
-        height: height,
-        viewportFraction: viewFraction,
-        autoPlay: true,
-        enableInfiniteScroll: true,
-        autoPlayAnimationDuration: const Duration(milliseconds: 800),
-      ),
+    CityController cityController = Get.find<CityController>();
+    LocationController locationController = Get.find<LocationController>();
+    return FutureBuilder<List<Site>>(
+      builder: (_, AsyncSnapshot<List<Site>> sites) {
+        if (sites.hasData) {
+          return ListView.builder(
+            itemCount: sites.data!.length,
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return SiteItem(site: sites.data![index]);
+            },
+          );
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
+      future: cityController.getSitesForCity(cityToshowSites),
     );
   }
 }

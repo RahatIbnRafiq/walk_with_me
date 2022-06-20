@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:walk_with_me/controllers/city_controller.dart';
 
 class LocationController extends GetxController {
   var latitude = 'Getting Latitude..'.obs;
@@ -57,5 +58,7 @@ class LocationController extends GetxController {
         await placemarkFromCoordinates(position.latitude, position.longitude);
     Placemark place = placemark[0];
     address.value = '${place.locality}';
+    // debugPrint("Got loction: " + address.value);
+    Get.find<CityController>().changeCurrentCity(address.value);
   }
 }
