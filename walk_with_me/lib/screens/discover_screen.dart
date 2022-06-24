@@ -62,7 +62,7 @@ class DiscoverScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 40.0,
+            height: 30.0,
           ),
           Obx(
             () => SiteCarousel(

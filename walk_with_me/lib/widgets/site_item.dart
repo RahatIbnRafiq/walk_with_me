@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:walk_with_me/controllers/media_player_controller.dart';
 import 'package:walk_with_me/models/site.dart';
 
-class SiteItem extends StatelessWidget {
+class SiteItem extends StatefulWidget {
   const SiteItem({
     Key? key,
     required this.site,
@@ -10,9 +12,19 @@ class SiteItem extends StatelessWidget {
   final Site site;
 
   @override
+  State<SiteItem> createState() => _SiteItemState();
+}
+
+class _SiteItemState extends State<SiteItem> {
+  @override
   Widget build(BuildContext context) {
+    MediaPlayerController mediaPlayerController =
+        Get.find<MediaPlayerController>();
+
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed("/sitedetails", arguments: {'site': widget.site});
+      },
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -24,7 +36,7 @@ class SiteItem extends StatelessWidget {
         child: Stack(
           children: [
             Hero(
-              tag: 'site_' + site.name,
+              tag: 'site_' + widget.site.name,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: ColorFiltered(
@@ -33,7 +45,7 @@ class SiteItem extends StatelessWidget {
                   child: Image(
                     height: double.infinity,
                     width: double.infinity,
-                    image: NetworkImage(site.imageUrl),
+                    image: NetworkImage(widget.site.imageUrl),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -50,7 +62,7 @@ class SiteItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        site.name,
+                        widget.site.name,
                         maxLines: 3,
                         style: const TextStyle(
                           fontSize: 20.0,
@@ -62,7 +74,7 @@ class SiteItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        site.description,
+                        widget.site.description,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 4,
                         style: const TextStyle(
@@ -76,7 +88,7 @@ class SiteItem extends StatelessWidget {
                       height: 40,
                     ),
                     Text(
-                      "Tags:" + site.category.join(","),
+                      "Tags:" + widget.site.category.join(","),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                       style: const TextStyle(
@@ -93,13 +105,29 @@ class SiteItem extends StatelessWidget {
               bottom: 10.0,
               right: 10.0,
               child: IconButton(
-                icon: const Icon(
-                  Icons.play_circle_filled,
+                icon: Icon(
+                  mediaPlayerController.isAlreadyAddedToPlaylist(widget.site)
+                      ? Icons.playlist_add_check_circle
+                      : Icons.play_circle_filled,
                   color: Colors.black26,
                 ),
                 iconSize: 70,
                 alignment: Alignment.center,
-                onPressed: () {},
+                onPressed: () {
+                  String message = 'Added to Playlist';
+                  if (mediaPlayerController
+                      .isAlreadyAddedToPlaylist(widget.site)) {
+                    message = "Already added to the playlist";
+                  } else {
+                    mediaPlayerController.addMedia(widget.site);
+                  }
+                  final snackBar = SnackBar(
+                    duration: const Duration(milliseconds: 300),
+                    content: Text(message),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  setState(() {});
+                },
               ),
             ),
           ],

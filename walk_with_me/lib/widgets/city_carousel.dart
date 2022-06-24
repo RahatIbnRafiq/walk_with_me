@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:walk_with_me/controllers/city_controller.dart';
 import 'package:walk_with_me/controllers/location_controller.dart';
 import 'package:walk_with_me/models/city.dart';
+import 'package:walk_with_me/widgets/city_item.dart';
 
 class CityCarousel extends StatefulWidget {
   const CityCarousel({Key? key}) : super(key: key);
@@ -25,60 +26,7 @@ class _CityCarouselState extends State<CityCarousel>
         itemCount: cityList.length,
         itemBuilder: (context, index) {
           City city = cityList[index];
-          return GestureDetector(
-            onTap: () {
-              cityController.changeSuggestedCity(city.city.toString());
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              margin: const EdgeInsets.all(10.0),
-              width: 180.0,
-              child: Stack(
-                children: [
-                  Hero(
-                    tag: 'city_' + city.imageUrl,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Image(
-                        height: 180.0,
-                        width: 180.0,
-                        image: AssetImage(city.imageUrl),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10.0,
-                    left: 10.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          city.city,
-                          style: const TextStyle(
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 40,
-                        ),
-                        const Icon(
-                          Icons.download_for_offline,
-                          color: Colors.white,
-                          size: 30.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
+          return CityItem(city: city);
         },
       ),
     );

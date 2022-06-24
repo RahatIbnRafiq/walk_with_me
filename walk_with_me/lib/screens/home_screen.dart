@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/controllers/bottom_nav_bar_controller.dart';
 import 'package:walk_with_me/globals/constants.dart';
-import 'package:walk_with_me/screens/contact_us_screen.dart';
 import 'package:walk_with_me/screens/discover_screen.dart';
 import 'package:walk_with_me/screens/mapview_screen.dart';
+import 'package:walk_with_me/screens/media_player_screen.dart';
 import 'package:walk_with_me/widgets/app_drawer.dart';
 import 'package:walk_with_me/widgets/bottom_navigation_bar.dart';
 
@@ -26,7 +26,8 @@ class HomeScreen extends StatelessWidget {
           children: const [
             DiscoverScreen(),
             MapViewScreen(),
-            ContactUsScreen(),
+            //ContactUsScreen(),
+            MediaPlayerScreen(),
           ],
         ),
       ),

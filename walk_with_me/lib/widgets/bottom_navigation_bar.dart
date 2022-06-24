@@ -31,7 +31,7 @@ class BottomNavBar extends StatelessWidget {
         items: [
           navBarItem(Icons.travel_explore_rounded, 'explore'.tr),
           navBarItem(Icons.navigation, 'map_view'.tr),
-          navBarItem(Icons.feedback, 'contact_us'.tr),
+          navBarItem(Icons.music_note, 'Listen'.tr),
         ],
       ),
     );

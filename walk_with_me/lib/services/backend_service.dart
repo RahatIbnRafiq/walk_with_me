@@ -267,4 +267,17 @@ class SitesService {
     });
     return result;
   }
+
+  static getSiteUrlByName(String name) {
+    List<Site> sites = [];
+    citySites.forEach((key, _) {
+      sites.addAll(citySites[key] as List<Site>);
+    });
+    for (Site site in sites) {
+      if (site.name == name) {
+        return site.imageUrl;
+      }
+    }
+    return "";
+  }
 }

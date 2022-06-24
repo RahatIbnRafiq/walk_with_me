@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:walk_with_me/globals/constants.dart';
 import 'package:walk_with_me/globals/messages.dart';
 import 'package:walk_with_me/screens/home_screen.dart';
+import 'package:walk_with_me/screens/site_details_screen.dart';
 
 import 'bindings/homepage_bindings.dart';
 
@@ -32,21 +33,21 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/home',
         getPages: [
-          // GetPage(
-          //   name: '/signup',
-          //   page: () => const Signup(),
-          //   binding: SignupBindings(),
-          // ),
-          // GetPage(
-          //   name: '/signin',
-          //   page: () => const Signin(),
-          //   binding: SigninBindings(),
-          // ),
           GetPage(
             name: '/home',
             page: () => const HomeScreen(),
             binding: HomepageBindings(),
           ),
+          GetPage(
+            name: '/sitedetails',
+            page: () => const SiteDetailsScreen(),
+            //binding: HomepageBindings(),
+          ),
+          // GetPage(
+          //   name: '/mediaplayer',
+          //   page: () => const MediaPlayerScreen(),
+          //   binding: HomepageBindings(),
+          // ),
         ],
       ),
     );

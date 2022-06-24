@@ -23,15 +23,22 @@ class SiteCarousel extends StatelessWidget {
     return FutureBuilder<List<Site>>(
       builder: (_, AsyncSnapshot<List<Site>> sites) {
         if (sites.hasData) {
-          return ListView.builder(
-            itemCount: sites.data!.length,
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
-              return SiteItem(site: sites.data![index]);
-            },
-          );
+          if (sites.data!.isNotEmpty) {
+            return ListView.builder(
+              itemCount: sites.data!.length,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return SiteItem(site: sites.data![index]);
+              },
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text("No sites found for the city of " + cityToshowSites),
+            );
+          }
         }
         return const Center(child: CircularProgressIndicator());
       },
