@@ -3,8 +3,9 @@ import 'dart:io';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:walk_with_me/controllers/data_controller.dart';
 import 'package:walk_with_me/controllers/media_player_controller.dart';
-import 'package:walk_with_me/services/backend_service.dart';
+// import 'package:walk_with_me/services/backend_service.dart';
 
 class MediaPlayerScreen extends StatelessWidget {
   const MediaPlayerScreen({Key? key}) : super(key: key);
@@ -47,8 +48,8 @@ class MediaPlayerScreen extends StatelessWidget {
     );
   }
 
-  Widget playlistBackgroundImage(
-      MediaPlayerController mediaPlayerController, Size size) {
+  Widget playlistBackgroundImage(MediaPlayerController mediaPlayerController,
+      DataController datacontroller, Size size) {
     if (mediaPlayerController.mediaTitles.isNotEmpty) {
       return SizedBox(
         height: 250,
@@ -71,10 +72,18 @@ class MediaPlayerScreen extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage(SitesService.getSiteUrlByName(
-                            mediaPlayerController.mediaTitle.value.toString())),
+                        image: NetworkImage(
+                            mediaPlayerController.getPlaylistMediaImageUrls(
+                                mediaPlayerController.mediaTitle.value
+                                    .toString())),
                         fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(20)),
+                // decoration: BoxDecoration(
+                //     image: DecorationImage(
+                //         image: NetworkImage(SitesService.getSiteUrlByName(
+                //             mediaPlayerController.mediaTitle.value.toString())),
+                //         fit: BoxFit.cover),
+                //     borderRadius: BorderRadius.circular(20)),
               ),
             ),
             currentSongTitle(mediaPlayerController, size),
@@ -161,7 +170,8 @@ class MediaPlayerScreen extends StatelessWidget {
     }
   }
 
-  Widget playListItem(MediaPlayerController mediaPlayerController, int index) {
+  Widget playListItem(MediaPlayerController mediaPlayerController,
+      DataController datacontroller, int index) {
     return Dismissible(
       direction: DismissDirection.endToStart,
       onDismissed: (_) {
@@ -176,9 +186,15 @@ class MediaPlayerScreen extends StatelessWidget {
           child: ListTile(
             leading: CircleAvatar(
               radius: 30.0,
-              backgroundImage: NetworkImage(SitesService.getSiteUrlByName(
-                  mediaPlayerController.mediaTitles[index])),
+              backgroundImage: NetworkImage(
+                  mediaPlayerController.getPlaylistMediaImageUrls(
+                      mediaPlayerController.mediaTitles[index])),
             ),
+            // leading: CircleAvatar(
+            //   radius: 30.0,
+            //   backgroundImage: NetworkImage(SitesService.getSiteUrlByName(
+            //       mediaPlayerController.mediaTitles[index])),
+            // ),
             title: Text(mediaPlayerController.mediaTitles[index]),
           ),
         ),
@@ -195,7 +211,8 @@ class MediaPlayerScreen extends StatelessWidget {
     );
   }
 
-  Widget playList(MediaPlayerController mediaPlayerController, Size size) {
+  Widget playList(MediaPlayerController mediaPlayerController,
+      DataController datacontroller, Size size) {
     return Expanded(
       child: ListView.builder(
         scrollDirection: Axis.vertical,
@@ -203,14 +220,14 @@ class MediaPlayerScreen extends StatelessWidget {
         itemCount: mediaPlayerController.mediaTitles.length,
         //itemCount: 10,
         itemBuilder: (context, index) {
-          return playListItem(mediaPlayerController, index);
+          return playListItem(mediaPlayerController, datacontroller, index);
         },
       ),
     );
   }
 
-  Widget playerControllWidget(
-      MediaPlayerController mediaPlayerController, Size size) {
+  Widget playerControllWidget(MediaPlayerController mediaPlayerController,
+      DataController datacontroller, Size size) {
     return SizedBox(
       width: double.infinity,
       child: ClipRRect(
@@ -247,6 +264,7 @@ class MediaPlayerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     MediaPlayerController mediaPlayerController =
         Get.find<MediaPlayerController>();
+    DataController dataController = Get.find<DataController>();
     Size size = MediaQuery.of(context).size;
 
     sleep(const Duration(seconds: 2));
@@ -255,15 +273,16 @@ class MediaPlayerScreen extends StatelessWidget {
       child: Obx(
         () => Column(
           children: [
-            playlistBackgroundImage(mediaPlayerController, size),
+            playlistBackgroundImage(
+                mediaPlayerController, dataController, size),
             const SizedBox(
               height: 20,
             ),
-            playList(mediaPlayerController, size),
+            playList(mediaPlayerController, dataController, size),
             const SizedBox(
               height: 10,
             ),
-            playerControllWidget(mediaPlayerController, size),
+            playerControllWidget(mediaPlayerController, dataController, size),
           ],
         ),
       ),

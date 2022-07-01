@@ -20,6 +20,7 @@ class _SiteItemState extends State<SiteItem> {
   Widget build(BuildContext context) {
     MediaPlayerController mediaPlayerController =
         Get.find<MediaPlayerController>();
+    // PlayListController playListController = Get.find<PlayListController>();
 
     return GestureDetector(
       onTap: () {
@@ -36,7 +37,7 @@ class _SiteItemState extends State<SiteItem> {
         child: Stack(
           children: [
             Hero(
-              tag: 'site_' + widget.site.name,
+              tag: 'site_' + widget.site.name!,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: ColorFiltered(
@@ -45,7 +46,7 @@ class _SiteItemState extends State<SiteItem> {
                   child: Image(
                     height: double.infinity,
                     width: double.infinity,
-                    image: NetworkImage(widget.site.imageUrl),
+                    image: NetworkImage(widget.site.imageUrls![0]),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -62,7 +63,7 @@ class _SiteItemState extends State<SiteItem> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        widget.site.name,
+                        widget.site.name!,
                         maxLines: 3,
                         style: const TextStyle(
                           fontSize: 20.0,
@@ -74,7 +75,7 @@ class _SiteItemState extends State<SiteItem> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        widget.site.description,
+                        widget.site.description!,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 4,
                         style: const TextStyle(
@@ -88,7 +89,7 @@ class _SiteItemState extends State<SiteItem> {
                       height: 40,
                     ),
                     Text(
-                      "Tags:" + widget.site.category.join(","),
+                      "Tags:" + widget.site.tags!.join(","),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                       style: const TextStyle(
@@ -120,6 +121,7 @@ class _SiteItemState extends State<SiteItem> {
                     message = "Already added to the playlist";
                   } else {
                     mediaPlayerController.addMedia(widget.site);
+                    //mediaPlayerController.add(widget.site);
                   }
                   final snackBar = SnackBar(
                     duration: const Duration(milliseconds: 300),

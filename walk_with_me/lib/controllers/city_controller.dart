@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walk_with_me/models/site.dart';
-import 'package:walk_with_me/services/backend_service.dart';
+// import 'package:walk_with_me/models/site.dart';
+// import 'package:walk_with_me/services/backend_service.dart';
 
 class CityController extends GetxController {
   var initialCity = "Rome".obs;
@@ -31,12 +31,5 @@ class CityController extends GetxController {
     selectedCity.value = city;
     suggestedCitySelected.value = true;
     changeSelectedCity();
-  }
-
-  Future<List<Site>> getSitesForCity(String city) async {
-    var sites = SitesService.getSitesByCity(city);
-    debugPrint("hello got sites for city: " + city);
-    debugPrint("total sites: " + sites.length.toString());
-    return sites;
   }
 }

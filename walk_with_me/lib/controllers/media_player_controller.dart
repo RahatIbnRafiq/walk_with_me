@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'dart:typed_data';
 
-import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -28,20 +28,55 @@ class MediaPlayerController extends GetxController {
     buffered: Duration.zero,
     total: Duration.zero,
   ).obs;
-  var buttonState = ButtonState.paused.obs;
-  late AudioPlayer _audioPlayer;
-  late ConcatenatingAudioSource _playlist;
+  var playlist = [].obs;
   var mediaTitle = "".obs;
   var mediaTitles = [].obs;
   var isFirstMedia = true.obs;
   var isLastMedia = false.obs;
+  var buttonState = ButtonState.paused.obs;
+
+  late AudioPlayer _audioPlayer;
+  late ConcatenatingAudioSource _playlistWithAudioSource;
+
   final FlutterTts tts = FlutterTts();
 
   @override
   void onInit() {
-    super.onInit();
     initMediaPlayer();
     initPlayList();
+    debugPrint("Initializing media controller now...");
+    List? storedPlaylist = GetStorage().read<List>('playlist');
+    try {
+      playlist = storedPlaylist!.map((e) => Site.fromJson(e)).toList().obs;
+      debugPrint("playlist got loaded from storage, playlist length is : " +
+          playlist.length.toString());
+      debugPrint("Loading the playlist into the media player now: ");
+      for (var site in playlist) {
+        //var src = Uri.file(site.audioSource);
+        var media = AudioSource.uri(site.audioSource, tag: site.name);
+        _playlistWithAudioSource.add(media);
+        debugPrint("now the media player has how many playlists? : " +
+            _playlistWithAudioSource.length.toString());
+      }
+
+      debugPrint("Finally how many playlists does the media player have? : " +
+          _playlistWithAudioSource.length.toString());
+    } catch (e) {
+      debugPrint("Exception took place when loading playlist: " + e.toString());
+    }
+
+    ever(playlist, (_) {
+      GetStorage().write('playlist', playlist.toList());
+      debugPrint("Written to storage. playlist length now: " +
+          playlist.length.toString());
+    });
+    super.onInit();
+  }
+
+  @override
+  InternalFinalCallback<void> get onDelete {
+    debugPrint("onDelete called for media controller");
+    return super.onDelete;
   }
 
   void initMediaPlayer() async {
@@ -52,9 +87,9 @@ class MediaPlayerController extends GetxController {
   }
 
   void initPlayList() async {
-    _playlist = ConcatenatingAudioSource(children: []);
+    _playlistWithAudioSource = ConcatenatingAudioSource(children: []);
 
-    await _audioPlayer.setAudioSource(_playlist);
+    await _audioPlayer.setAudioSource(_playlistWithAudioSource);
   }
 
   void play() {
@@ -77,34 +112,56 @@ class MediaPlayerController extends GetxController {
     _audioPlayer.seekToNext();
   }
 
-  bool isAlreadyAddedToPlaylist(Site site) {
-    if (mediaTitles.contains(site.name)) {
-      return true;
+  String getPlaylistMediaImageUrls(String siteName) {
+    for (var playlistsSite in playlist) {
+      if (playlistsSite.name!.compareTo(siteName) == 0) {
+        return playlistsSite.imageUrls![0];
+      }
     }
-    return false;
+    return "";
   }
 
-  Future<void> writeToFile(ByteData data, String path) {
-    final buffer = data.buffer;
-    return File(path).writeAsBytes(
-        buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
+  bool isAlreadyAddedToPlaylist(Site site) {
+    for (var playlistSite in playlist) {
+      if (site.name == playlistSite.name) {
+        return true;
+      }
+    }
+    return false;
+    // return playlistController.isAlreadyAddedToPlaylist(site);
+    // if (mediaTitles.contains(site.name)) {
+    //   return true;
+    // }
+    // return false;
   }
+
+  // Future<void> writeToFile(ByteData data, String path) {
+  //   final buffer = data.buffer;
+  //   return File(path).writeAsBytes(
+  //       buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
+  // }
 
   void addMedia(Site site) async {
     final externalDirectory = await getExternalStorageDirectory();
-    var mediaName = site.name + ".mp4";
+    var mediaName = site.name! + ".mp4";
     var externalPath = '${externalDirectory!.path}/$mediaName';
-    await tts.synthesizeToFile(site.description, mediaName);
+    debugPrint("Adding media For site: " + site.name!);
+    await tts.synthesizeToFile(site.description!, mediaName);
 
     sleep(const Duration(seconds: 3));
     var src = Uri.file(externalPath);
     var media = AudioSource.uri(src, tag: site.name);
-    _playlist.add(media);
+    site.audioSource = Uri.parse(externalPath.toString());
+    playlist.add(site);
+    _playlistWithAudioSource.add(media);
+    debugPrint("Current playlist length is :" + playlist.length.toString());
+    debugPrint("Added media to the playlist: " + externalPath.toString());
   }
 
   void removeMedia(int index) {
     if (index < 0) return;
-    _playlist.removeAt(index);
+    playlist.removeAt(index);
+    _playlistWithAudioSource.removeAt(index);
   }
 
   void _listenForChangesInSequenceState() {

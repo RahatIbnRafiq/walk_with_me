@@ -41,7 +41,7 @@ class SiteDetailsScreen extends StatelessWidget {
                   child: Stack(
                     children: [
                       Hero(
-                        tag: 'site_' + site.name,
+                        tag: 'site_' + site.name!,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(40.0),
                           child: ColorFiltered(
@@ -51,7 +51,7 @@ class SiteDetailsScreen extends StatelessWidget {
                             child: Image(
                               height: double.infinity,
                               width: double.infinity,
-                              image: NetworkImage(site.imageUrl),
+                              image: NetworkImage(site.imageUrls![0]),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -63,7 +63,7 @@ class SiteDetailsScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            site.name,
+                            site.name!,
                             maxLines: 2,
                             style: TextStyle(
                               fontSize: 20.0,
@@ -128,7 +128,7 @@ class SiteDetailsScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 20.0,
                   child: Text(
-                    "Tags: " + site.category.join(","),
+                    "Tags: " + site.tags!.join(","),
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 10,
@@ -140,7 +140,7 @@ class SiteDetailsScreen extends StatelessWidget {
                   height: 10,
                 ),
                 ReadMoreText(
-                  site.description,
+                  site.description!,
                   trimLines: 5,
                   colorClickableText: Color.fromARGB(255, 24, 2, 9),
                   trimMode: TrimMode.Line,

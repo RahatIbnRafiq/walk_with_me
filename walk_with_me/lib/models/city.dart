@@ -1,60 +1,30 @@
-// ignore_for_file: file_names
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 
 class City {
-  String imageUrl;
-  String city;
-  String country;
-  String description;
+  String? name;
+  String? imageUrl;
+  dynamic location;
+  List<dynamic>? sites;
 
   City({
+    required this.name,
     required this.imageUrl,
-    required this.city,
-    required this.country,
-    required this.description,
+    required this.location,
+    required this.sites,
   });
 
-  static List<City> getAll() {
-    return cities;
+  void printCity() {
+    debugPrint("City name: " + name.toString());
+    debugPrint("City image: " + imageUrl.toString());
+    debugPrint("City location: " + location.toString());
+    debugPrint("City sites: " + sites.toString());
   }
 
-  static List<City> getDownloaded() {
-    return cities.sublist(1, 3);
-  }
-
-  static List<City> getMostPopular() {
-    return cities.sublist(2, 5);
+  City.fromDocumentSnapshot({required DocumentSnapshot documentSnapshot}) {
+    name = documentSnapshot["name"];
+    imageUrl = documentSnapshot["image"];
+    location = documentSnapshot["location"];
+    sites = documentSnapshot["sites"];
   }
 }
-
-List<City> cities = [
-  City(
-    imageUrl: 'assets/images/barcelona.jpeg',
-    city: 'Barcelona',
-    country: 'Spain',
-    description: 'Visit Barcelona for an amazing and unforgettable adventure.',
-  ),
-  City(
-    imageUrl: 'assets/images/dublin.jpeg',
-    city: 'Dublin',
-    country: 'Ireland',
-    description: 'Visit Dublin for an amazing and unforgettable adventure.',
-  ),
-  City(
-    imageUrl: 'assets/images/rome.jpeg',
-    city: 'Rome',
-    country: 'Italy',
-    description: 'Visit Rome for an amazing and unforgettable adventure.',
-  ),
-  City(
-    imageUrl: 'assets/images/munich.jpeg',
-    city: 'Munich',
-    country: 'Germany',
-    description: 'Visit Munich for an amazing and unforgettable adventure.',
-  ),
-  City(
-    imageUrl: 'assets/images/london.jpeg',
-    city: 'London',
-    country: 'United Kingdom',
-    description: 'Visit London for an amazing and unforgettable adventure.',
-  ),
-];

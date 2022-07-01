@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:walk_with_me/controllers/city_controller.dart';
+import 'package:walk_with_me/controllers/data_controller.dart';
 import 'package:walk_with_me/controllers/location_controller.dart';
 import 'package:walk_with_me/widgets/city_carousel.dart';
 import 'package:walk_with_me/widgets/search_suggestion.dart';
 import 'package:walk_with_me/widgets/site_carousel.dart';
+// import 'package:walk_with_me/widgets/site_carousel.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class DiscoverScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     CityController cityController = Get.find<CityController>();
     LocationController locationController = Get.find<LocationController>();
+    DataController dataController = Get.find<DataController>();
     return SafeArea(
       child: ListView(
         padding: const EdgeInsets.symmetric(

@@ -20,7 +20,7 @@ class CityItem extends StatelessWidget {
     LocationController locationController = Get.find<LocationController>();
     return GestureDetector(
       onTap: () {
-        cityController.changeSuggestedCity(city.city.toString());
+        cityController.changeSuggestedCity(city.name!);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -32,13 +32,13 @@ class CityItem extends StatelessWidget {
         child: Stack(
           children: [
             Hero(
-              tag: 'city_' + city.imageUrl,
+              tag: 'city_' + city.imageUrl!,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: Image(
                   height: 180.0,
                   width: 180.0,
-                  image: AssetImage(city.imageUrl),
+                  image: NetworkImage(city.imageUrl!),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -50,9 +50,9 @@ class CityItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    city.city,
+                    city.name!,
                     style: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 25.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
@@ -60,11 +60,11 @@ class CityItem extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  const Icon(
-                    Icons.download_for_offline,
-                    color: Colors.white,
-                    size: 30.0,
-                  ),
+                  // const Icon(
+                  //   Icons.download_for_offline,
+                  //   color: Colors.white,
+                  //   size: 30.0,
+                  // ),
                 ],
               ),
             ),
