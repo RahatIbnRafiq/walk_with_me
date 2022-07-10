@@ -22,24 +22,9 @@ class Constants {
         icon:
             const Icon(Icons.menu, color: Colors.black), // set your color here
         onPressed: () {
-          scaffoldKey.currentState!.openDrawer();
+          scaffoldKey.currentState?.openDrawer();
         },
       ),
-      // actions: <Widget>[
-      //   PopupMenuButton<int>(
-      //     icon: const Icon(
-      //       Icons.person,
-      //       color: Colors.black,
-      //     ),
-      //     onSelected: (item) {
-      //       popUpMenuNavigations(item);
-      //     },
-      //     itemBuilder: (context) => [
-      //       const PopupMenuItem<int>(value: 1, child: Text('Settings')),
-      //       const PopupMenuItem<int>(value: 0, child: Text('Sign Out')),
-      //     ],
-      //   ),
-      // ],
     );
   }
 
